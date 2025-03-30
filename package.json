@@ -1,0 +1,47 @@
+{
+  "name": "zk-voting-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@rainbow-me/rainbowkit": "^2.2.4",
+    "@tanstack/react-query": "^5.71.0",
+    "buffer": "^6.0.3",
+    "circomlibjs": "^0.1.7",
+    "ethers": "^6.13.5",
+    "events": "^3.3.0",
+    "framer-motion": "^10.18.0",
+    "process": "^0.11.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.4.1",
+    "snarkjs": "^0.7.5",
+    "util": "^0.12.5",
+    "viem": "^2.24.2",
+    "vite-plugin-node-polyfills": "^0.23.0",
+    "wagmi": "^2.14.15"
+  },
+  "devDependencies": {
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
+    "@eslint/js": "^9.21.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "vite": "^6.2.0"
+  }
+}
