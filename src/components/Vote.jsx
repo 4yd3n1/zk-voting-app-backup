@@ -134,8 +134,8 @@ const Vote = () => {
   if (!isConnected) {
     return (
       <VStack spacing={4} align="center">
-        <Heading size="lg">Please connect your wallet to vote</Heading>
-        <Text color="whiteAlpha.600">Connect your wallet using the button in the top right corner</Text>
+        <Heading size="lg" color="white">Please connect your wallet to vote</Heading>
+        <Text color="whiteAlpha.800">Connect your wallet using the button in the top right corner</Text>
       </VStack>
     );
   }
