@@ -19,6 +19,7 @@ import { http } from 'wagmi';
 import { mainnet, sepolia } from 'wagmi/chains';
 import { WagmiProvider, createConfig } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import TokenTransfer from './components/TokenTransfer';
 
 const { ToastContainer } = createStandaloneToast();
 
@@ -74,7 +75,7 @@ const AppLayout = () => {
           px={8}
           position="relative"
         >
-          <Box>
+          <HStack spacing={4}>
             <Button
               onClick={() => navigate('/create-proposal')}
               bg="#2172e5"
@@ -87,7 +88,19 @@ const AppLayout = () => {
             >
               Create New Proposal
             </Button>
-          </Box>
+            <Button
+              onClick={() => navigate('/transfer')}
+              bg="#2172e5"
+              color="white"
+              _hover={{ bg: "#1a5bc5" }}
+              borderRadius="xl"
+              boxShadow="0px 4px 12px rgba(0, 0, 0, 0.1)"
+              size="md"
+              px={6}
+            >
+              Send ETH
+            </Button>
+          </HStack>
           <Heading 
             size="md" 
             color="white" 
@@ -125,6 +138,7 @@ const AppLayout = () => {
           <Routes>
             <Route path="/" element={<Vote />} />
             <Route path="/create-proposal" element={<CreateProposal />} />
+            <Route path="/transfer" element={<TokenTransfer />} />
           </Routes>
         </Box>
       </Box>
