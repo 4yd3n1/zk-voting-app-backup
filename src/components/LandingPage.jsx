@@ -8,8 +8,8 @@ const PathButton = ({ icon, title, description, to, colorScheme }) => (
     <Button
       w="full"
       h="auto"
-      p={8}
-      minH="280px"
+      p={6}
+      minH="180px"
       bg={colorScheme === 'blue' ? '#2172e5' : '#7B3FE4'}
       color="white"
       _hover={{ 
@@ -21,20 +21,20 @@ const PathButton = ({ icon, title, description, to, colorScheme }) => (
       boxShadow="0px 4px 12px rgba(0, 0, 0, 0.2)"
       transition="all 0.2s"
     >
-      <VStack spacing={6} maxW="300px">
-        <Icon as={icon} boxSize={12} />
+      <VStack spacing={4}>
+        <Icon as={icon} boxSize={8} />
         <Heading 
           as="h3" 
-          size="lg" 
+          size="md" 
           textAlign="center"
         >
           {title}
         </Heading>
         <Text 
-          fontSize="md"
+          fontSize="sm"
           textAlign="center"
           whiteSpace="normal"
-          maxW="250px"
+          maxW="200px"
         >
           {description}
         </Text>
@@ -46,71 +46,75 @@ const PathButton = ({ icon, title, description, to, colorScheme }) => (
 const LandingPage = () => {
   return (
     <Box 
-      w="100%"
-      minH="100vh"
-      bg="#000000"
+      w="100vw"
+      h="calc(100vh - 52px)"
       display="flex"
       alignItems="center"
       justifyContent="center"
-      py={16}
+      bg="#000000"
     >
-      <Container maxW="container.lg">
-        <VStack spacing={16}>
-          <VStack spacing={4} textAlign="center">
-            <Heading 
-              size="2xl" 
-              color="white" 
-              letterSpacing="tight"
-              fontWeight="bold"
-            >
-              Welcome to your private and secure identity
-            </Heading>
-            <Text 
-              fontSize="xl" 
-              color="whiteAlpha.800" 
-              maxW="600px"
-              lineHeight="1.6"
-            >
-              Secure, private, and transparent governance for everyone
-            </Text>
-          </VStack>
-
-          <SimpleGrid 
-            columns={{ base: 1, md: 2 }} 
-            spacing={10} 
-            w="100%" 
-            maxW="1000px"
-          >
-            <PathButton
-              icon={FaVoteYea}
-              title="PARTICIPATE"
-              description="Vote on proposals, join discussions, and engage with your community"
-              to="/participate"
-              colorScheme="blue"
-            />
-
-            <PathButton
-              icon={FaUserShield}
-              title="ACT"
-              description="Create referendums, manage policies, and distribute benefits"
-              to="/act"
-              colorScheme="purple"
-            />
-          </SimpleGrid>
-
-          <Text 
-            color="whiteAlpha.800" 
-            fontSize="md"
+      <VStack 
+        spacing={12} 
+        w="100%" 
+        maxW="container.lg"
+        px={4}
+      >
+        <VStack spacing={4} textAlign="center">
+          <Heading 
+            size="2xl" 
+            color="white" 
+            letterSpacing="tight"
+            fontWeight="bold"
             textAlign="center"
-            maxW="600px"
-            p={4}
-            borderRadius="lg"
-            bg="whiteAlpha.100"
           >
-            Verified through FranceConnect for secure and private participation
+            Welcome to your private and secure identity
+          </Heading>
+          <Text 
+            fontSize="xl" 
+            color="whiteAlpha.800" 
+            maxW="600px"
+            textAlign="center"
+          >
+            Secure, private, and transparent governance for everyone
           </Text>
         </VStack>
-      </Container>
+
+        <SimpleGrid 
+          columns={{ base: 1, md: 2 }} 
+          spacing={8} 
+          w="100%" 
+          maxW="800px"
+          mx="auto"
+        >
+          <PathButton
+            icon={FaVoteYea}
+            title="PARTICIPATE"
+            description="Vote on proposals and engage with your community"
+            to="/participate"
+            colorScheme="blue"
+          />
+
+          <PathButton
+            icon={FaUserShield}
+            title="ACT"
+            description="Create referendums and manage policies"
+            to="/act"
+            colorScheme="purple"
+          />
+        </SimpleGrid>
+
+        <Text 
+          color="whiteAlpha.800" 
+          fontSize="sm"
+          textAlign="center"
+          maxW="400px"
+          p={3}
+          borderRadius="lg"
+          bg="whiteAlpha.100"
+        >
+          Verified through FranceConnect for secure and private participation
+        </Text>
+      </VStack>
     </Box>
   );
 };

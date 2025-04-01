@@ -8,7 +8,8 @@ import {
   useToast,
   Heading,
   HStack,
-  Icon
+  Icon,
+  Container
 } from '@chakra-ui/react';
 import { useAccount, useWriteContract, useSimulateContract } from 'wagmi';
 import { ethers } from 'ethers';
@@ -133,97 +134,147 @@ const Vote = () => {
 
   if (!isConnected) {
     return (
-      <VStack spacing={4} align="center">
-        <Heading size="lg" color="white">Please connect your wallet to vote</Heading>
-        <Text color="whiteAlpha.800">Connect your wallet using the button in the top right corner</Text>
-      </VStack>
+      <Box 
+        w="100%"
+        h="100%"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <VStack spacing={4} align="center">
+          <Heading size="lg" color="white">Please connect your wallet to vote</Heading>
+          <Text color="whiteAlpha.800">Connect your wallet using the button in the top right corner</Text>
+        </VStack>
+      </Box>
     );
   }
 
   return (
-    <VStack spacing={6} align="stretch">
-      <HStack spacing={3} justify="center" width="100%">
-        <Icon as={FaVoteYea} boxSize={5} color="whiteAlpha.900" />
-        <Heading size="md" color="whiteAlpha.900">Vote on Proposal</Heading>
-      </HStack>
-
-      <Text fontSize="md" color="cyan.400" fontWeight="medium">
-        "Greening and pedestrianizing 500 streets in Paris"
-      </Text>
-
-      <HStack spacing={3} justify="center">
-        <Button
-          colorScheme="green"
-          onClick={() => setVote(1)}
-          size="md"
-          variant={vote === 1 ? "solid" : "outline"}
-          w="120px"
-          h="40px"
-        >
-          FOR
-        </Button>
-        <Button
-          colorScheme="red"
-          onClick={() => setVote(0)}
-          size="md"
-          variant={vote === 0 ? "solid" : "outline"}
-          w="120px"
-          h="40px"
-        >
-          AGAINST
-        </Button>
-      </HStack>
-
-      <Text fontSize="sm" color="whiteAlpha.600">
-        This secret makes your vote anonymous. It will be used to create a
-        hidden commitment that proves your vote without revealing it.
-      </Text>
-
-      <Input
-        type="number"
-        placeholder="Enter a secret"
-        value={secret}
-        onChange={(e) => setSecret(e.target.value)}
-        bg="transparent"
-        border="1px solid"
-        borderColor="whiteAlpha.200"
-        _hover={{ borderColor: "whiteAlpha.300" }}
-        _focus={{ borderColor: "blue.500", boxShadow: "none" }}
-        size="md"
-        h="40px"
-        color="white"
-        _placeholder={{ color: "whiteAlpha.400" }}
-      />
-
-      <Button
-        colorScheme="blue"
-        onClick={generateProof}
-        isLoading={loading}
-        size="md"
-        h="40px"
+    <Box 
+      w="100%"
+      h="100%"
+      p={8}
+    >
+      <Box
+        maxW="1200px"
+        w="100%"
+        mx="auto"
+        h="100%"
       >
-        Generate zk Proof
-      </Button>
+        <VStack spacing={12} align="center" w="100%">
+          <VStack spacing={6} align="center" w="100%">
+            <HStack spacing={3} justify="center">
+              <Icon as={FaVoteYea} boxSize={8} color="whiteAlpha.900" />
+              <Heading size="lg" color="white">Vote on Proposal</Heading>
+            </HStack>
 
-      {commitment && (
-        <Box p={4} bg="whiteAlpha.50" borderRadius="md">
-          <Text fontWeight="medium" mb={2} color="whiteAlpha.900">Commitment Hash:</Text>
-          <Text fontSize="sm" wordBreak="break-all" color="whiteAlpha.800">{commitment}</Text>
-        </Box>
-      )}
+            <Text 
+              fontSize="xl" 
+              color="cyan.400" 
+              fontWeight="medium"
+              textAlign="center"
+            >
+              "Greening and pedestrianizing 500 streets in Paris"
+            </Text>
+          </VStack>
 
-      {proof && (
-        <Text color="green.400" fontSize="sm">
-          ✓ zk-SNARK Proof Generated
-        </Text>
-      )}
+          <VStack spacing={8} align="center" w="100%">
+            <HStack spacing={6} justify="center">
+              <Button
+                colorScheme="green"
+                onClick={() => setVote(1)}
+                size="lg"
+                variant={vote === 1 ? "solid" : "outline"}
+                w="160px"
+                h="48px"
+              >
+                FOR
+              </Button>
+              <Button
+                colorScheme="red"
+                onClick={() => setVote(0)}
+                size="lg"
+                variant={vote === 0 ? "solid" : "outline"}
+                w="160px"
+                h="48px"
+              >
+                AGAINST
+              </Button>
+            </HStack>
 
-      {verified !== null && (
-        <Text color={verified ? "green.400" : "red.400"} fontSize="sm">
-          {verified ? "✓ Proof verified" : "✗ Invalid proof"}
-        </Text>
-      )}
-    </VStack>
+            <Box w="100%" maxW="600px">
+              <Text 
+                fontSize="sm" 
+                color="whiteAlpha.600"
+                textAlign="center"
+                mb={4}
+              >
+                This secret makes your vote anonymous. It will be used to create a hidden commitment that proves your vote without revealing it.
+              </Text>
+
+              <Input
+                type="number"
+                placeholder="Enter a secret"
+                value={secret}
+                onChange={(e) => setSecret(e.target.value)}
+                bg="whiteAlpha.50"
+                border="1px solid"
+                borderColor="whiteAlpha.200"
+                _hover={{ borderColor: "whiteAlpha.300" }}
+                _focus={{ borderColor: "blue.500", boxShadow: "none" }}
+                size="lg"
+                h="48px"
+                mb={4}
+              />
+
+              <Button
+                colorScheme="blue"
+                onClick={generateProof}
+                isLoading={loading}
+                size="lg"
+                w="100%"
+                h="48px"
+              >
+                Generate zk Proof
+              </Button>
+            </Box>
+
+            {commitment && (
+              <Box 
+                p={6}
+                bg="whiteAlpha.50" 
+                borderRadius="md" 
+                w="100%"
+                maxW="600px"
+              >
+                <Text fontWeight="medium" mb={2} color="whiteAlpha.900">
+                  Commitment Hash:
+                </Text>
+                <Text 
+                  fontSize="sm" 
+                  wordBreak="break-all" 
+                  color="whiteAlpha.800"
+                >
+                  {commitment}
+                </Text>
+              </Box>
+            )}
+
+            {proof && (
+              <Text color="green.400" fontSize="md">
+                ✓ zk-SNARK Proof Generated
+              </Text>
+            )}
+
+            {verified !== null && (
+              <Text color={verified ? "green.400" : "red.400"} fontSize="md">
+                {verified ? "✓ Proof verified" : "✗ Invalid proof"}
+              </Text>
+            )}
+          </VStack>
+        </VStack>
+      </Box>
+    </Box>
   );
 };
 

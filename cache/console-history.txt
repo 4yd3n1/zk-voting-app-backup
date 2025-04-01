@@ -1,0 +1,2 @@
+git clone https://github.com/4yd3n1/zk-voting-app-backup.git temp-backup && xcopy /E /I /Y temp-backup\* . && rmdir /S /Q temp-backup
+npx hardhat run scripts/getProposal.js --network sepolia
